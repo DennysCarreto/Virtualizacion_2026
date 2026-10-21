@@ -173,10 +173,10 @@ kubectl apply -f argo_apps/app2-application.yaml
 
 ### Evidencias: Aplicaciones en Estado Synced y Healthy
 *Vista general de las dos aplicaciones:*
-![Aplicaciones Synced y Healthy](docs/img/02-apps-synced-initial.png)
+![Aplicaciones Synced y Healthy](capturas/vistaApps.png)
 
 *Detalle y topología de recursos de `app1-backend` (2 réplicas iniciales):*
-![Topología app1-backend](docs/img/03-app1-initial-tree.png)
+![Topología app1-backend](capturas/replicas2.png)
 
 ---
 
@@ -199,9 +199,17 @@ Para validar la sincronización de GitOps en el clúster:
 
 ### Evidencia: Sincronización y Nuevo Estado
 *Aplicación `app1-backend` con 4 réplicas en estado Synced y Healthy:*
-![Escalado a 4 réplicas en Argo CD](docs/img/04-app1-synced-after-scale.png)
+![Escalado a 4 réplicas en Argo CD](capturas/cambio_4_replicas.png)
 
 Comprobación en terminal:
 ```powershell
 kubectl get pods -n parcial-dryca
 ```
+
+
+## EXTRAS
+Instalación y configuración correcta de Argo CD.
+![CORRECTO](capturas/instalacion_configuracion_ArgoCD.png)
+
+Exposición de Argo CD por medio de Traefik y nombre de dominio.
+![EXPOsicion y nombre de dominio](capturas/expo_name_dominio.png)
