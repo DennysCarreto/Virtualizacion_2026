@@ -1,0 +1,16 @@
+server:
+  persistentVolume:
+    enabled: false # En Minikube para pruebas o true si tienes storageclass estándar
+  retention: "7d"
+  service:
+    type: ClusterIP
+    servicePort: 9090
+
+alertmanager:
+  enabled: false
+
+kube-state-metrics:
+  enabled: true
+
+prometheus-node-exporter:
+  enabled: true

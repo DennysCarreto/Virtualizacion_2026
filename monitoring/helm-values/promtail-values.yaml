@@ -1,0 +1,24 @@
+config:
+  lokiAddress: http://loki:3100/loki/api/v1/push
+  clients:
+    - url: http://loki:3100/loki/api/v1/push
+  snippets:
+    pipelineStages:
+      - cri: {}
+    extraScrapeConfigs: |
+      - job_name: kubernetes-pods-parcial-and-traefik
+        kubernetes_sd_configs:
+          - role: pod
+        relabel_configs:
+          # Solo incluir pods de parcial-dryca o traefik
+          - source_labels: [__meta_kubernetes_namespace]
+            action: keep
+            regex: (parcial-dryca|traefik)
+          - source_labels: [__meta_kubernetes_namespace]
+            target_label: namespace
+          - source_labels: [__meta_kubernetes_pod_name]
+            target_label: pod
+          - source_labels: [__meta_kubernetes_pod_container_name]
+            target_label: container
+          - source_labels: [__meta_kubernetes_pod_label_app]
+            target_label: app
